@@ -1,0 +1,50 @@
+const products = [
+  { id: 1, name: "Smartphone", category: "electronics", price: 12000, image: "https://via.placeholder.com/200x150?text=Phone" },
+  { id: 2, name: "T-Shirt", category: "clothing", price: 800, image: "https://via.placeholder.com/200x150?text=T-Shirt" },
+  { id: 3, name: "Headphones", category: "electronics", price: 2500, image: "https://via.placeholder.com/200x150?text=Headphones" },
+  { id: 4, name: "Wrist Watch", category: "accessories", price: 3500, image: "https://via.placeholder.com/200x150?text=Watch" },
+  { id: 5, name: "Jeans", category: "clothing", price: 1800, image: "https://via.placeholder.com/200x150?text=Jeans" },
+  { id: 6, name: "Laptop", category: "electronics", price: 52000, image: "https://via.placeholder.com/200x150?text=Laptop" }
+];
+
+const productContainer = document.getElementById("productContainer");
+const categoryFilter = document.getElementById("categoryFilter");
+const priceFilter = document.getElementById("priceFilter");
+
+function displayProducts(filteredProducts) {
+  productContainer.innerHTML = "";
+  filteredProducts.forEach(p => {
+    const card = document.createElement("div");
+    card.classList.add("product-card");
+    card.innerHTML = `
+      <img src="${p.image}" alt="${p.name}">
+      <h4>${p.name}</h4>
+      <p class="price">₹${p.price}</p>
+      <p>${p.category}</p>
+    `;
+    productContainer.appendChild(card);
+  });
+}
+
+function filterProducts() {
+  const categoryValue = categoryFilter.value;
+  const priceValue = priceFilter.value;
+
+  let filtered = products.filter(p => {
+    let categoryMatch = categoryValue === "all" || p.category === categoryValue;
+    let priceMatch =
+      priceValue === "all" ||
+      (priceValue === "low" && p.price < 1000) ||
+      (priceValue === "mid" && p.price >= 1000 && p.price <= 3000) ||
+      (priceValue === "high" && p.price > 3000);
+    return categoryMatch && priceMatch;
+  });
+
+  displayProducts(filtered);
+}
+
+categoryFilter.addEventListener("change", filterProducts);
+priceFilter.addEventListener("change", filterProducts);
+
+// Initial display
+displayProducts(products);
