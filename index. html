@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Catalog with Filters</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Product Catalog 🛍️</h1>
+  </header>
+
+  <section class="filters">
+    <h3>Filter by Category</h3>
+    <select id="categoryFilter">
+      <option value="all">All</option>
+      <option value="electronics">Electronics</option>
+      <option value="clothing">Clothing</option>
+      <option value="accessories">Accessories</option>
+    </select>
+
+    <h3>Filter by Price</h3>
+    <select id="priceFilter">
+      <option value="all">All</option>
+      <option value="low">Below ₹1000</option>
+      <option value="mid">₹1000 - ₹3000</option>
+      <option value="high">Above ₹3000</option>
+    </select>
+  </section>
+
+  <section class="product-container" id="productContainer">
+    <!-- Products will be shown here -->
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
