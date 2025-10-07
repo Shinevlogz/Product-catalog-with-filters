@@ -1,1 +1,1 @@
-# Product-catalog-with-filters
+A simple and responsive Product Catalog Web App built using HTML, CSS, and JavaScript, allowing users to view and filter products by category and price range.
